@@ -1,20 +1,50 @@
 using System;
 
-namespace TodoList
+namespace TodoListProject
 {
     public class TodoItem
     {
-        //Label
-        string label;
-        //Beskrivning
-        string description;
-        //Datum: När den blev skapad
-        DateTime createdAt;
-        //Datum: Deadline
-        //Datum: När den blev klar
-        //Gjord eller inte?
+        public string label;
         bool isDone;
-        //Person(er)
-        // List<Person> persons;
+        public bool IsDone
+        {
+            get
+            {
+                return isDone;
+            }
+            set
+            {
+                isDone = value;
+                if (isDone)
+                {
+                    completedAt = DateTime.Now;
+                }
+            }
+        }
+        private DateTime completedAt;
+
+        private DateTime createdAt;
+
+        public DateTime CreatedAt
+        {
+            get
+            {
+                return createdAt;
+            }
+        }
+
+        public TodoItem()
+        {
+            createdAt = DateTime.Now;
+        }
+
+        public void ToggleIsDone()
+        {
+            isDone = !isDone;
+            if (isDone)
+            {
+                completedAt = DateTime.Now;
+            }
+        }
     }
 }
